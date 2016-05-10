@@ -36,3 +36,12 @@ isLetters :: String -> Bool
 isLetters []            = False
 isLetters [x]           = x `elem` lts
 isLetters (x:rs)        = (x `elem` lts) && isLetters rs
+
+drp :: Int -> [a] -> [a]
+drp n xs = if n <= 0 || null xs
+           then xs
+           else drp (n-1) (tail xs)
+
+--tak :: Int -> [a] -> [a]
+
+
