@@ -1,4 +1,4 @@
-
+module Haskell.Lists() where
 --use ++ operator to connect lists
 --use : cons operator to connect element with a list
 lostNumbers = [1,2,3]
@@ -87,4 +87,3 @@ adjectives = ["lazy","grouchy","scheming"]
 decoratedNouns = [adjective ++ " " ++ noun|adjective <- adjectives, noun <-nouns]
 len xs = sum [1|_<-xs]
 removeNonLetters st = [c|c<-st, c `elem` ['A'..'Z']++['a'..'z']]
-

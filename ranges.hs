@@ -1,4 +1,4 @@
-
+module Haskell.Ranges() where
 nums = [0..9]
 lowerCaseLetters = ['a'..'z']
 upperCaseLetters = ['A'..'Z']

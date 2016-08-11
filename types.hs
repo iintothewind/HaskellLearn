@@ -1,4 +1,4 @@
-
+module Haskell.Types() where 
 --Function type declarations
 removeNonUppercase :: String -> String 
 removeNonUppercase st = [c|c<-st, c `elem` ['A'..'Z']]

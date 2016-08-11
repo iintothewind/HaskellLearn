@@ -1,3 +1,4 @@
+module Haskell.Tuples() where 
 p :: (Int, Char)
 p = (3, 'x')
 

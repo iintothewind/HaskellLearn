@@ -1,4 +1,4 @@
-
+module Haskell.Hanoi() where 
 --CIS194 Homework1
 --The Tower of Hanoi
 

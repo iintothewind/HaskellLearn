@@ -1,3 +1,4 @@
+module Haskell.Funcs() where 
 fadd :: Int -> Int -> Int -> Int
 fadd x y z = x + y + z
 
@@ -37,11 +38,13 @@ isLetters []            = False
 isLetters [x]           = x `elem` lts
 isLetters (x:rs)        = (x `elem` lts) && isLetters rs
 
-drp :: Int -> [a] -> [a]
-drp n xs = if n <= 0 || null xs
-           then xs
-           else drp (n-1) (tail xs)
+drp :: Integral i => i -> [a] -> [a]
+drp _ []                = []
+drp n xs | n <= 0       = xs
+drp n (x:rs)            = drp (n-1) rs
 
---tak :: Int -> [a] -> [a]
-
+tak :: Integral i => i -> [a] -> [a]
+tak n  _ | n <=0        = []
+tak _ []                = []
+tak n (x:rs)            = x:tak (n-1) rs
 

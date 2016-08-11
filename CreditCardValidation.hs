@@ -1,4 +1,4 @@
-
+module Haskell.Card() where
 --CIS 194: Homework 1
 --Validating Credit Card Numbers
 

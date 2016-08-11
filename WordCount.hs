@@ -1,2 +1,12 @@
-main = interact wordCount
-    where wordCount input = show (length (words input)) ++ "\n"
+module Haskell.WordCount(
+countLines,
+countWords,
+countChars
+) where  
+
+countLines input = length (lines input) 
+
+countWords input = length (words input)
+
+countChars input = length input 
+
