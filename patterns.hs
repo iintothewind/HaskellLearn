@@ -48,8 +48,30 @@ bigger a b
 
 bmiTell :: (RealFloat a) => a -> a -> String
 bmiTell weight height
-    | weight / height ^ 2 <= 18.5 = "You're underweight, you emo, you"
-    | weight / height ^ 2 <= 25.0 = "You're supposedly normal."
-    | weight / height ^ 2 <= 30.0 = "You're fat!"
-    | otherwise                   = "You're a whale, congratulations!"
+    | bmi <= skinny = "You're underweight"
+    | bmi <= normal = "You're supposedly normal"
+    | bmi <= fat = "You're fat"
+    | otherwise = "You're a whale, congratulations!"
+    where bmi = weight / height ^ 2
+          (skinny, normal, fat) = (18.5, 25.0, 30.0)
+
+calcBmis :: (RealFloat a) => [(a, a)] -> [a]
+calcBmis xs = [bmi w h | (w, h) <- xs]
+    where bmi weight height = weight / height ^ 2
+
+initials :: String -> String -> String
+initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
+    where (f:_) = firstname
+          (l:_) = lastname
+
+mx :: (Ord a) => a -> a -> a
+mx a b
+    | a > b = a
+    | otherwise = b
+
+cmp :: (Ord a) => a -> a -> Ordering
+a `cmp` b
+    | a > b = GT
+    | a < b = LT
+    | otherwise = EQ
 
