@@ -26,19 +26,19 @@ third :: (a, b, c) -> c
 third (_, _, z) = z
 
 hd :: [a] -> a
-hd [] = error "Can't call head on an empty list, dummy"
+hd []    = error "Can't call head on an empty list, dummy"
 hd (x:_) = x
 
 tl :: [a] -> [a]
-tl [] = []
+tl []     = []
 tl (x:rs) = rs
 
 len :: (Integral n) => [a] -> n
-len [] = 0
+len []     = 0
 len (_:rs) = 1 + len rs
 
 sumup :: (Num a) => [a] -> a
-sumup [] = 0
+sumup []     = 0
 sumup (x:rs) = x + sumup rs
 
 bigger :: (Ord a) => a -> a -> a
@@ -74,4 +74,3 @@ a `cmp` b
     | a > b = GT
     | a < b = LT
     | otherwise = EQ
-
