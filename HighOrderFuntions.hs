@@ -15,4 +15,3 @@ divByTen x= (/10)
 isUpperCase :: Char -> Bool
 isUpperCase = (`elem` ['A'..'Z'])
 
-
