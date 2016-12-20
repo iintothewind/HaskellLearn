@@ -27,6 +27,9 @@ rev :: [a] -> [a]
 rev []     = []
 rev (x:rs) = rev rs ++ [x]  -- ++ is not an efficient way, and its not stack safe either.
 
+rpt :: a -> [a]
+rpt x = x:rpt x
+
 zp :: [a] -> [b] -> [(a,b)]
 zp _ []          = []
 zp [] _          = []
