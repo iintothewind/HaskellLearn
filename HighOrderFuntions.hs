@@ -1,5 +1,5 @@
 module Haskell.HighOrderFunctions () where
-
+import qualified Data.List as List
 multThree :: (Num a) => a -> a -> a -> a
 multThree x y z = x * y * z
 
@@ -25,4 +25,27 @@ zpWith f (x:xs) (y:ys) = f x y : zpWith f xs ys
 
 flp :: (a -> b -> c) -> (b -> a -> c)
 flp f x y = f y x
+
+mp :: (a -> b) -> [a] -> [b]
+mp _ [] = []
+mp f (x:xs) = f x : mp f xs
+
+flt :: (a -> Bool) -> [a] -> [a]
+flt _ [] = []
+flt p (x:xs)
+  | p x = x : flt p xs
+  | otherwise = flt p xs
+
+qsortf :: (Ord a) => [a] -> [a]
+qsortf [] = []
+qsortf (x:xs) =
+  let smallerSorted = qsortf (flt (<=x) xs)
+      biggerSorted = qsortf (flt (>x) xs)
+  in  smallerSorted ++ [x] ++ biggerSorted
+
+largestDivisible :: (Integral a) => [a] -> a -> a
+largestDivisible [] _ = error "empty list"
+largestDivisible xs n = head (flt p (List.reverse (qsortf xs)))
+  where p x = x `rem` n == 0
+
 
