@@ -11,3 +11,9 @@ lambdaLongChains n
   | n <= 1 = error "too small"
   | n >  1 = filter (\xs -> length xs > 10) (map collatzChain [1..n])
 
+sumThree :: (Num a) => a -> a -> a -> a
+sumThree = \x y z -> x + y + z
+
+flp :: (a -> b -> c) -> b -> a -> c
+flp f = \a b -> f b a 
+
