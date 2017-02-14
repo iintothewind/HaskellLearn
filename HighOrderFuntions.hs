@@ -48,4 +48,20 @@ largestDivisible [] _ = error "empty list"
 largestDivisible xs n = head (flt p (List.reverse (qsortf xs)))
   where p x = x `rem` n == 0
 
+collatzChain :: (Integral a) => a -> [a]
+collatzChain n
+  | n <= 1 = [n]
+  | odd n  = n : collatzChain (n*3 +1)
+  | even n = n : collatzChain (n `div` 2)
+
+longChains :: (Integral a) => a -> [[a]]
+longChains n 
+  | n <= 1 = error "too small"
+  | n >  1 = filter p (map collatzChain [1..n])
+  where p xs = length xs > 10
+
+funs :: (Integral a) => [a -> a]
+funs = map (*) [0..]
+
+
 
