@@ -17,3 +17,10 @@ sumThree = \x y z -> x + y + z
 flp :: (a -> b -> c) -> b -> a -> c
 flp f = \a b -> f b a 
 
+zw :: (Integral a) => [a] 
+zw = zipWith (\a b -> a*b) [1,2,3,4,5] [5,4,3,2,1]
+
+mp :: (Integral a) => [a]
+mp = map (\(a,b) -> a + b) [(1,2),(3,4),(5,6),(7,8)]
+
+

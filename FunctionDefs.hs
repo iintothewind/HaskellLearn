@@ -1,7 +1,7 @@
 module Haskell.Types() where 
 --Function type declarations
 removeNonUppercase :: String -> String 
-removeNonUppercase st = [c|c<-st, c `elem` ['A'..'Z']]
+removeNonUppercase st = [c | c<-st, c `elem` ['A'..'Z']]
 
 addThree :: Int -> Int -> Int -> Int
 addThree x y z = x+y+z
