@@ -5,7 +5,7 @@ data Thing = Shoe
             |SealingWax
             |Cabbage
             |King
-            deriving Show
+             deriving Show
 
 shoe :: Thing
 shoe = Shoe
@@ -28,16 +28,17 @@ isBig _    = False
 --beyond enumerations
 data FailableDouble  = Failure
                       |Ok Double
-                      deriving Show
+                       deriving Show
 
 safeDiv :: Double -> Double -> FailableDouble
 safeDiv _ 0 = Failure
 safeDiv x y = Ok (x / y)
 
 failureToZero :: FailableDouble -> Double
-failureToZero Failure = 0
-failureToZero (Ok d) = d
+failuretozero Failure = 0
+failureToZero (Ok d)  = d
 
 data Person = Person String Int Thing
               deriving Show
+
 
