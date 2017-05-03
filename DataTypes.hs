@@ -58,7 +58,7 @@ getAge (Person _ a _) = "The age of this Person is: " ++ show a
 
 checkFav :: Person -> String
 checkFav (Person n _ SealingWax) = n ++ ", your favorite is SealingWax"
-checkFav (Person n _ _) = n ++ ", your favourite thing is lame"
+checkFav (Person n _ _)          = n ++ ", your favourite thing is lame"
 
 -- algebraic data types in general
 
@@ -67,33 +67,32 @@ checkFav (Person n _ _) = n ++ ", your favourite thing is lame"
 -- case expressions
 descStr :: String -> String
 descStr s = case s of
-              [] -> "empty string"
+              []      -> "empty string"
               ('H':_) -> "a string starts with H"
-              _ -> "other case"
+              _       -> "other case"
 
 failToZero :: FailableDouble -> Double
 failToZero x = case x of
                  Failure -> 0
-                 Ok d -> d
+                 Ok d    -> d
 
 data IntList = Empty
               |Cons Int IntList
                deriving Show
 
 intListPrd :: IntList -> Int
-intListPrd Empty = 1
+intListPrd Empty       = 1
 intListPrd (Cons x rs) = x * intListPrd rs
 
 hdIntList :: IntList -> Int
 hdIntList xs = case xs of
-                 Empty -> error "head of empty list"
+                 Empty      -> error "head of empty list"
                  (Cons x _) -> x
 
 data Tree = Leaf Int
            |Node Tree Int Tree
             deriving Show
 tree :: Tree
-tree = Node (Node (Leaf 1) 2 (Leaf 3)) 4 (Node (Leaf 3) 3 (Leaf 5)) 
-
+tree = Node (Node (Leaf 1) 2 (Leaf 3)) 4 (Node (Leaf 3) 3 (Leaf 5))
 
 
