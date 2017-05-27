@@ -1,4 +1,5 @@
 module Haskell.Lists() where
+import           Data.List
 --use ++ operator to connect lists
 --use : cons operator to connect element with a list
 lostNumbers = [1,2,3]
@@ -87,3 +88,11 @@ adjectives = ["lazy","grouchy","scheming"]
 decoratedNouns = [adjective ++ " " ++ noun|adjective <- adjectives, noun <-nouns]
 len xs = sum [1 | _<-xs]
 removeNonLetters st = [c | c<-st, c `elem` ['A'..'Z']++['a'..'z']]
+
+numCount :: (Ord a) => [a] -> [(a,Int)]
+numCount = map (\l@(x:xs) -> (x, length l)).group.sort
+
+search :: Eq a => [a] -> [a] -> Bool
+search needle haystack = 
+  foldl (\acc x -> take (length needle) x == needle || acc) False (tails haystack)
+

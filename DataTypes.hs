@@ -95,4 +95,3 @@ data Tree = Leaf Int
 tree :: Tree
 tree = Node (Node (Leaf 1) 2 (Leaf 3)) 4 (Node (Leaf 3) 3 (Leaf 5))
 
-

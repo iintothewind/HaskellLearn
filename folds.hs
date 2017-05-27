@@ -26,3 +26,6 @@ had = foldr1 (\x _ -> x)
 
 lst :: [a] -> a
 lst = foldl1 (\_ x -> x)
+
+
+
