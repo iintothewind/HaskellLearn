@@ -96,3 +96,77 @@ search :: Eq a => [a] -> [a] -> Bool
 search needle haystack = 
   foldl (\acc x -> take (length needle) x == needle || acc) False (tails haystack)
 
+-- span p xs is equivalent to (takeWhile p xs, dropWhile p xs)
+spanned = span (<3) [1,2,3,4]
+
+-- break p is equivalent to span (not . p) 
+broke = break (<3) [1,2,3,4]
+
+{-safeHead :: [a] -> Maybe a-}
+{-safeHead xs = if null xs then Nothing else Just (head xs)-}
+
+{-safeTail :: [a] -> Maybe [a]-}
+{-safeTail xs = if null xs then Nothing else Just (tail xs)-}
+
+{-safeLast :: [a] -> Maybe a-}
+{-safeLast xs = if null xs then Nothing else Just (last xs)-}
+
+{-safeInit :: [a] -> Maybe [a]-}
+{-safeInit xs = if null xs then Nothing else Just (init xs)-}
+
+safeListFunc func [] = Nothing
+safeListFunc func xs = Just (func xs)
+
+safeHead = safeListFunc head
+safeTail = safeListFunc tail
+safeLast = safeListFunc last
+safeInit = safeListFunc init
+
+splitWith :: (a -> Bool) -> [a] -> [[a]]
+splitWith _ [] = []
+splitWith p xs
+  | null left && not (null right) = splitWith p (tail right)
+  | not (null left) && null right = [left]
+  | otherwise = left : splitWith p right
+  where (left, right) = break p xs
+
+spw :: (a -> Bool) -> [a] -> [[a]]
+spw _ [] = []
+spw p xs = l : spw p (dropWhile p r) where (l, r) = break p xs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
