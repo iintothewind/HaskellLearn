@@ -74,3 +74,26 @@ a `cmp` b
     | a > b = GT
     | a < b = LT
     | otherwise = EQ
+
+fib1 = (map fib' [0 ..] !!)
+    where
+      fib' 0 = 0
+      fib' 1 = 1
+      fib' n = fib1 (n - 1) + fib1 (n - 2)
+
+-- eta-expansion, perf drop 
+fib2 x = map fib' [0 ..] !! x
+    where
+      fib' 0 = 0
+      fib' 1 = 1
+      fib' n = fib2 (n - 1) + fib2 (n - 2)
+
+data Tree = Leaf Int
+           |Node Tree Int Tree
+            deriving (Show,Eq)
+-- conditional evaluation with guards is better
+nodesAreSame (Leaf a) (Leaf b)
+  | a == b = Just (Leaf a)
+nodesAreSame (Node a b c) (Node x y z)
+  | a == x && b == y && c == z = Just (Node a b c)
+nodesAreSame _ _ = Nothing
