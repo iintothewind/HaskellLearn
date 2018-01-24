@@ -26,7 +26,7 @@ ossa =
 
 -- Function application with $
 -- $ is defined as:
--- ($) :: (a -> b) -> a -> b  
+-- ($) :: (a -> b) -> a -> b
 -- f $ x = f x
 
 sumMap :: (Floating a) => [a] -> a
@@ -45,9 +45,9 @@ sumFlt xs = sum (filter (>10) (map (*2) xs))
 sumFltd :: (Num a, Ord a) => [a] -> a
 sumFltd xs = sum $ filter (>10) $ map (*2) xs
 
---But apart from getting rid of parentheses, $ means that function application can be treated just like another function. 
+--But apart from getting rid of parentheses, $ means that function application can be treated just like another function.
 --That way, we can, for instance, map function application over a list of functions.
-xsd = map ($ 3) [(4+), (10*), (^2), sqrt]  
+xsd = map ($ 3) [(4+), (10*), (^2), sqrt]
 
 
 

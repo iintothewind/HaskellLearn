@@ -92,7 +92,7 @@ cle xs = foldr (:) (cle xs) xs
 
 -- Data.OldList.words
 wds :: String -> [String]
-wds = foldr brk [] where 
+wds = foldr brk [] where
   brk c z
     | null z = [[c]]
     | c == ' ' = [] : z
@@ -100,7 +100,7 @@ wds = foldr brk [] where
 
 -- Data.OldList.unlines
 ulns :: [String] -> String
-ulns = foldr (\w z -> w ++ "\n" ++ z) [] 
+ulns = foldr (\w z -> w ++ "\n" ++ z) []
 
 
 -- Data.Foldable.foldl'
