@@ -140,8 +140,8 @@ il txt = map (head . words) (lines txt)
 
 -- Data.List transpose
 tp :: [[a]] -> [[a]]
-tp []             = []
-tp ([] : xss)     = tp xss
+tp [] = []
+tp ([] : xss) = tp xss
 tp ((x:xs) : xss) = (x : [h | (h:_) <- xss]) : tp (xs : [t | (_:t) <- xss])
 
 oddList :: [Int] -> [Int]
