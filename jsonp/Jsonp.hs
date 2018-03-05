@@ -6,13 +6,9 @@ module Jsonp (
   getBool,
   getObject,
   getArray,
-<<<<<<< HEAD
   isNull,
   renderJsonValue) where
 import Data.List (intercalate)
-=======
-  isNull) where
->>>>>>> d37d3471fb02b73b79e5ce45bbbabdae1d1ceec2
 
 data JsonValue = JsonString String
                 |JsonNumber Double
@@ -49,39 +45,16 @@ getArray _ = Nothing
 isNull :: JsonValue -> Bool
 isNull j = j == JsonNull
 
-<<<<<<< HEAD
-renderJsonValue :: JsonValue -> String
 renderJsonValue (JsonString s) = show s
 renderJsonValue (JsonNumber n) = show n
 renderJsonValue (JsonBool True) = "True"
 renderJsonValue (JsonBool False) = "False"
 renderJsonValue JsonNull = "null"
-
 renderJsonValue (JsonObject o) = "{" ++ pairs o ++ "}"
   where pairs [] = ""
         pairs ps = intercalate ", " (map renderPair ps)
         renderPair (k,v) = show k ++ ": " ++ renderJsonValue v
-
 renderJsonValue (JsonArray a) = "[" ++ values a ++ "]"
   where values [] = ""
         values vs = intercalate ", " (map renderJsonValue vs)
-=======
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> d37d3471fb02b73b79e5ce45bbbabdae1d1ceec2
-
-
-
-
-
 
