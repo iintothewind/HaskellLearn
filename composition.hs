@@ -49,3 +49,6 @@ sumFltd xs = sum $ filter (>10) $ map (*2) xs
 --That way, we can, for instance, map function application over a list of functions.
 xsd = map ($ 3) [(4+), (10*), (^2), sqrt]  
 
+
+
+

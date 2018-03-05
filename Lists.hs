@@ -93,13 +93,13 @@ numCount :: (Ord a) => [a] -> [(a,Int)]
 numCount = map (\l@(x:xs) -> (x, length l)).group.sort
 
 search :: Eq a => [a] -> [a] -> Bool
-search needle haystack = 
+search needle haystack =
   foldl (\acc x -> take (length needle) x == needle || acc) False (tails haystack)
 
 -- span p xs is equivalent to (takeWhile p xs, dropWhile p xs)
 spanned = span (<3) [1,2,3,4]
 
--- break p is equivalent to span (not . p) 
+-- break p is equivalent to span (not . p)
 broke = break (<3) [1,2,3,4]
 
 {-safeHead :: [a] -> Maybe a-}
@@ -134,36 +134,20 @@ spw :: (a -> Bool) -> [a] -> [[a]]
 spw _ [] = []
 spw p xs = l : spw p (dropWhile p r) where (l, r) = break p xs
 
+-- prints the first word of each line of its input
+il :: String -> [String]
+il txt = map (head . words) (lines txt)
 
+-- Data.List transpose
+tp :: [[a]] -> [[a]]
+tp [] = []
+tp ([] : xss) = tp xss
+tp ((x:xs) : xss) = (x : [h | (h:_) <- xss]) : tp (xs : [t | (_:t) <- xss])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+oddList :: [Int] -> [Int]
+oddList _                  = []
+oddList (x:xs) | odd x     = x : oddList xs
+               | otherwise = oddList xs
 
 
 
