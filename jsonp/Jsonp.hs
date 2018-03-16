@@ -8,8 +8,8 @@ module Jsonp (
   getArray,
   isNull,
   renderJsonValue) where
-import Data.List (intercalate)
-import Pretty (double,string,text,series,(<>),compact) 
+import           Data.List (intercalate)
+import           Pretty    (compact, double, series, string, text, (<>))
 
 data JsonValue = JsonString String
                 |JsonNumber Double
@@ -21,27 +21,27 @@ data JsonValue = JsonString String
 
 getString :: JsonValue -> Maybe String
 getString (JsonString s) = Just s
-getString _ = Nothing
+getString _              = Nothing
 
 getInt :: JsonValue -> Maybe Int
 getInt (JsonNumber d) = Just (truncate d)
-getInt _ = Nothing
+getInt _              = Nothing
 
 getDouble :: JsonValue -> Maybe Double
 getDouble (JsonNumber d) = Just d
-getDouble _ = Nothing
+getDouble _              = Nothing
 
 getBool :: JsonValue -> Maybe Bool
 getBool (JsonBool b) = Just b
-getBool _ = Nothing
+getBool _            = Nothing
 
 getObject :: JsonValue -> Maybe [(String, JsonValue)]
 getObject (JsonObject o) = Just o
-getObject _ = Nothing
+getObject _              = Nothing
 
 getArray :: JsonValue -> Maybe [JsonValue]
 getArray (JsonArray a) = Just a
-getArray _ = Nothing
+getArray _             = Nothing
 
 isNull :: JsonValue -> Bool
 isNull j = j == JsonNull
@@ -55,7 +55,7 @@ renderJsonValue JsonNull = string "null"
 renderJsonValue (JsonArray a) = series '[' ']' renderJsonValue a
 
 renderJsonValue (JsonObject o) = series '{' '}' field o
-  where field (name, v) = string name <> text ": " <> renderJsonValue v 
+  where field (name, v) = string name <> text ": " <> renderJsonValue v
 
 
 
