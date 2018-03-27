@@ -88,6 +88,14 @@ fib2 x = map fib' [0 ..] !! x
     fib' 1 = 1
     fib' n = fib2 (n - 1) + fib2 (n - 2)
 
+-- the o(n) solution
+fib :: Int -> Int
+fib a = fibt a 0 1
+  where
+    fibt n a b  
+      |n == 0 = a
+      |otherwise = fibt (n-1) b (a+b)
+
 data Tree = Leaf Int
            |Node Tree Int Tree
             deriving (Show,Eq)
