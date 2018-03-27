@@ -43,17 +43,17 @@ sumup (x:rs) = x + sumup rs
 
 bigger :: (Ord a) => a -> a -> a
 bigger a b
-    | a > b 		= a
-    | otherwise		= b
+  | a > b = a
+  | otherwise = b
 
 bmiTell :: (RealFloat a) => a -> a -> String
 bmiTell weight height
-    | bmi <= skinny = "You're underweight"
-    | bmi <= normal = "You're supposedly normal"
-    | bmi <= fat = "You're fat"
-    | otherwise = "You're a whale, congratulations!"
-    where bmi = weight / height ^ 2
-          (skinny, normal, fat) = (18.5, 25.0, 30.0)
+  | bmi <= skinny = "You're underweight"
+  | bmi <= normal = "You're supposedly normal"
+  | bmi <= fat = "You're fat"
+  | otherwise = "You're a whale, congratulations!"
+  where bmi = weight / height ^ 2
+        (skinny, normal, fat) = (18.5, 25.0, 30.0)
 
 calcBmis :: (RealFloat a) => [(a, a)] -> [a]
 calcBmis xs = [bmi w h | (w, h) <- xs]
@@ -66,27 +66,27 @@ initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
 
 mx :: (Ord a) => a -> a -> a
 mx a b
-    | a > b = a
-    | otherwise = b
+  | a > b = a
+  | otherwise = b
 
 cmp :: (Ord a) => a -> a -> Ordering
 a `cmp` b
-    | a > b = GT
-    | a < b = LT
-    | otherwise = EQ
+  | a > b = GT
+  | a < b = LT
+  | otherwise = EQ
 
 fib1 = (map fib' [0 ..] !!)
-    where
-      fib' 0 = 0
-      fib' 1 = 1
-      fib' n = fib1 (n - 1) + fib1 (n - 2)
+  where
+    fib' 0 = 0
+    fib' 1 = 1
+    fib' n = fib1 (n - 1) + fib1 (n - 2)
 
 -- eta-expansion, perf drop 
 fib2 x = map fib' [0 ..] !! x
-    where
-      fib' 0 = 0
-      fib' 1 = 1
-      fib' n = fib2 (n - 1) + fib2 (n - 2)
+  where
+    fib' 0 = 0
+    fib' 1 = 1
+    fib' n = fib2 (n - 1) + fib2 (n - 2)
 
 data Tree = Leaf Int
            |Node Tree Int Tree
