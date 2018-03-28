@@ -75,26 +75,28 @@ a `cmp` b
   | a < b = LT
   | otherwise = EQ
 
+fib1 :: Int -> Int
 fib1 = (map fib' [0 ..] !!)
   where
-    fib' 0 = 0
-    fib' 1 = 1
-    fib' n = fib1 (n - 1) + fib1 (n - 2)
+    fib' n
+      | n < 2 = n
+      | otherwise = fib1 (n - 1) + fib1 (n - 2) 
 
 -- eta-expansion, perf drop 
+fib2 :: Int -> Int
 fib2 x = map fib' [0 ..] !! x
   where
-    fib' 0 = 0
-    fib' 1 = 1
-    fib' n = fib2 (n - 1) + fib2 (n - 2)
+    fib' n
+      | n < 2 = n
+      | otherwise = fib1 (n - 1) + fib1 (n - 2) 
 
 -- the o(n) solution
 fib :: Int -> Int
 fib a = fibt a 0 1
   where
-    fibt n a b  
-      |n == 0 = a
-      |otherwise = fibt (n-1) b (a+b)
+    fibt n x y 
+      | n == 0 = x
+      | otherwise = fibt (n-1) y (x+y)
 
 data Tree = Leaf Int
            |Node Tree Int Tree

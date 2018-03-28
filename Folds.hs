@@ -21,13 +21,13 @@ suml :: (Num a) => [a] -> a
 suml = foldl (\acc x -> acc + x) 0
 
 eleml :: (Eq a) => a -> [a] -> Bool
-eleml x = foldl (\acc y -> (y==x || acc)) False 
+eleml x = foldl (\acc y -> (y==x || acc)) False
 
 mapl :: (a -> b) -> [a] -> [b]
 mapl f xs = reverse (foldl (\acc x -> f x : acc) [] xs)
 
 mapr :: (a -> b) -> [a] -> [b]
-mapr f = foldr (\x acc -> f x : acc) [] 
+mapr f = foldr (\x acc -> f x : acc) []
 maxl :: (Ord a) => [a] -> a
 maxl = foldl1 (\x acc -> if x > acc then x else acc)
 
