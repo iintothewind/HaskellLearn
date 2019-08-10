@@ -75,7 +75,7 @@ tkwr :: (a -> Bool) -> [a] -> [a]
 tkwr _ [] = []
 tkwr p (x:rs)
   | p x = x : tkwr p rs
-  | not (p x) = []
+  | otherwise = []
 
 -- Data.List.groupBy
 gpby :: (a -> a -> Bool) -> [a] -> [[a]]
