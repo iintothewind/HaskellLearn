@@ -55,7 +55,7 @@ renderJsonValue JsonNull = string "null"
 renderJsonValue (JsonArray a) = series '[' ']' renderJsonValue a
 
 renderJsonValue (JsonObject o) = series '{' '}' field o
-  where field (name, v) = string name <> text ": " <> renderJsonValue v
+  where field (name, v) = string name Pretty.<> text ": " Pretty.<> renderJsonValue v
 
 
 

@@ -14,15 +14,15 @@ anyString= "test String"
 headStr= head anyString
 
 charCount :: Show a => a -> Int
-charCount  = length . show 
+charCount  = length . show
 
 wordCount :: String -> Int
-wordCount = length . words 
+wordCount = length . words
 
 lineCount :: String -> Int
-lineCount = length . lines  
+lineCount = length . lines
 
-fib ::  Integer -> Integer 
+fib ::  Integer -> Integer
 fib 0 = 0
 fib 1 = 1
 fib n = fib (n-1) + fib (n - 2)
